@@ -61,6 +61,30 @@ public class Report {
     @Column(name = "updated_at", nullable = false)
     private Timestamp updated_at;
 
+    @Column(name = "wrok_time", nullable = false)
+    private Timestamp work_time;
+
+    @Column(name = "leave_time", nullable = false)
+    private Timestamp leave_time;
+
+
+    public Timestamp getWork_time() {
+        return work_time;
+    }
+
+    public void setWork_time(Timestamp work_time) {
+        this.work_time = work_time;
+    }
+
+    public Timestamp getLeave_time() {
+        return leave_time;
+    }
+
+    public void setLeave_time(Timestamp leave_time) {
+        this.leave_time = leave_time;
+    }
+
+
     public Integer getId() {
         return id;
     }

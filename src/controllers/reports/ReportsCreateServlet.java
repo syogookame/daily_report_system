@@ -55,11 +55,23 @@ public class ReportsCreateServlet extends HttpServlet {
             r.setTitle(request.getParameter("title"));
             r.setContent(request.getParameter("content"));
 
+            Timestamp work_time = new Timestamp(System.currentTimeMillis());
+            Timestamp leave_time = new Timestamp(System.currentTimeMillis());
+
+            List<String> errors = ReportValidator.validate(r);
+            try{
+                leave_time = Timestamp.valueOf(request.getParameter("leave_time"));
+                work_time = Timestamp.valueOf(request.getParameter("work_time"));
+            }catch(IllegalArgumentException e){
+                errors.add("(????-??-?? ??:??:??)の形で入力してください");
+            }
+            r.setLeave_time(leave_time);
+            r.setWork_time(work_time);
+
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
             r.setCreated_at(currentTime);
             r.setUpdated_at(currentTime);
 
-            List<String> errors = ReportValidator.validate(r);
             if(errors.size() > 0) {
                 em.close();
 

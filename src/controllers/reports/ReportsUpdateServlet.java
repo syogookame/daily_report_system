@@ -48,6 +48,14 @@ public class ReportsUpdateServlet extends HttpServlet {
             r.setUpdated_at(new Timestamp(System.currentTimeMillis()));
 
             List<String> errors = ReportValidator.validate(r);
+
+            try{
+                r.setLeave_time(Timestamp.valueOf(request.getParameter("leave_time")));
+                r.setWork_time(Timestamp.valueOf(request.getParameter("work_time")));
+            }catch(IllegalArgumentException e){
+                errors.add("(????-??-?? ??:??:??)の形で入力してください");
+            }
+
             if(errors.size() > 0) {
                 em.close();
 
