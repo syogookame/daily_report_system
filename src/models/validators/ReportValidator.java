@@ -18,10 +18,7 @@ public class ReportValidator {
         if(!content_error.equals("")) {
             errors.add(content_error);
         }
-       /* String leave_time_error = _validateLeave_time(r.getLeave_time());
-        if(!leave_time_error.equals("")){
-            errors.add(leave_time_error);
-        } */
+
         return errors;
     }
 
@@ -39,10 +36,6 @@ public class ReportValidator {
 
         return "";
     }
-  /*  private static String _validateLeave_time(Timestamp leave_time){
-         if(!leave_time.equals("yyyy-MM-dd hh:mm:ss")){
-             return "入力内容に誤りがあります。";
-         } */
 
-    }
+}
 
